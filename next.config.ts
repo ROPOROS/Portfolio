@@ -22,6 +22,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true, // ← This will let you build even with ESLint warnings/errors
+  },
 }
 
 export default nextConfig

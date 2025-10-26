@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
-import { FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { RxGithubLogo } from 'react-icons/rx'
 
 const Footer: FC = () => {
