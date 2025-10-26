@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-export const runtime = 'nodejs' // SMTP requires Node.js runtime, not Edge
+export const runtime = 'nodejs' // SMTP requires Node.js runtime
 
 interface FormData {
   name: string
@@ -14,32 +14,33 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { name, email, subject, message } = body as FormData
 
+    // ✅ Basic validation
     if (!name || !email || !subject || !message) {
       return new Response(JSON.stringify({ error: 'All fields are required' }), { status: 400 })
     }
 
-    // sanitize
+    // ✅ Sanitize inputs
     const sanitize = (str: string) => str.replace(/[<>]/g, '')
     const sanitizedName = sanitize(name)
     const sanitizedSubject = sanitize(subject)
     const sanitizedMessage = sanitize(message)
 
-    // ✅ Create reusable transporter using SMTP
+    // ✅ Create Nodemailer transporter
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      port: 465,          // SSL port
+      secure: true,       // true for SSL
       auth: {
-        user: process.env.SMTP_USER, // your gmail
-        pass: process.env.SMTP_PASS, // app password
+        user: process.env.SMTP_USER,  // sending email
+        pass: process.env.SMTP_PASS,  // Gmail App Password
       },
     })
 
-    // ✅ Send email
+    // ✅ Send the email
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
-      to: 'raedchebbi.work@gmail.com',
-      replyTo: email,
+      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,  // must match your Gmail
+      to: process.env.SMTP_TO || 'raedchebbi.work@gmail.com',  // where you want to receive messages
+      replyTo: email,                                         // lets you reply to the visitor
       subject: sanitizedSubject,
       html: `
         <h2>New Contact Form Submission</h2>
