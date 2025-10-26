@@ -4,6 +4,7 @@ import { IconMenu2, IconX } from '@tabler/icons-react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import Image from 'next/image'
 
+
 import React, { JSX, useRef, useState } from 'react'
 
 interface NavbarProps {
@@ -21,7 +22,7 @@ interface NavItemsProps {
   items: {
     name: string
     link: string
-    icon: JSX.Element
+    icon: React.ReactNode;
   }[]
   className?: string
   isScrolled: boolean

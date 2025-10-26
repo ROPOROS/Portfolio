@@ -16,8 +16,8 @@ export interface TimelineItem {
   imageURL: string
   description: string
   achievements: string[]
-  icon: JSX.Element
-  companyIcon: JSX.Element
+  icon: React.ReactNode;
+  companyIcon: React.ReactNode;
 }
 
 export const timelineData: TimelineItem[] = [
