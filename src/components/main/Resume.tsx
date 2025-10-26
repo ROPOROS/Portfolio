@@ -30,7 +30,7 @@ const ResumeSection = () => {
     setLanguage((prev) => (prev === 'en' ? 'fr' : 'en'))
   }
 
-  const resumeFile = language === 'en' ? '/resume-en.pdf' : '/resume-fr.pdf'
+  const resumeFile = language === 'en' ? '/CHEBBIRaed_CV_en.pdf' : '/CHEBBIRaed_CV_fr.pdf'
   const resumeLabel = language === 'en' ? 'English' : 'Français'
 
   return (
