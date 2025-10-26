@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { FC, useEffect, useState } from 'react'
 import { RxGithubLogo } from 'react-icons/rx'
+import { FaLinkedin } from 'react-icons/fa';
+
 
 const Footer: FC = () => {
   const [visitorCount, setVisitorCount] = useState<number>(0)
