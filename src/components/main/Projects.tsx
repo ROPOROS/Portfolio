@@ -53,7 +53,8 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      <BentoGrid className="max-w-5xl mx-auto">
+      {/* Rows grow with the content (the grid's default fixed md row height made the text overflow). */}
+      <BentoGrid className="max-w-5xl mx-auto px-4 grid-cols-1 md:auto-rows-auto">
         {projectsData.map((project, i) => (
           <BentoGridItem
             key={project.title}
@@ -89,7 +90,7 @@ const Projects = () => {
               </div>
             }
             header={
-              <div className="relative w-full h-full min-h-[6rem] rounded-xl overflow-hidden">
+              <div className="relative w-full h-40 shrink-0 rounded-xl overflow-hidden">
                 <Image
                   src={project.imageURL}
                   alt={project.title}
