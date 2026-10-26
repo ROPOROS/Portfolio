@@ -15,10 +15,21 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const title = 'Raed Chebbi - DevOps & DevSecOps Engineer'
+const description =
+  'Portfolio of Raed Chebbi, a junior DevOps & DevSecOps engineer working on infrastructure, automation, CI/CD and observability.'
+
 export const metadata: Metadata = {
-  title: ' Raed Chebbi - DevOps & Cloud Engineer',
-  description:
-    'A clean, modern, and responsive developer portfolio showcasing my projects, skills, and experience. Built using Next.js and styled with Tailwind CSS and ShadCN UI, and deployed seamlessly on Cloudflare Pages for speed and scalability.',
+  metadataBase: new URL('https://portfolio-o5pf.vercel.app'),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: '/',
+    siteName: 'Raed Chebbi',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({

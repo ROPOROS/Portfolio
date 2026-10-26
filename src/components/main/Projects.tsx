@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  IconCloud,
-  IconNetwork,
-  IconGitBranch,
-  IconDeviceGamepad2,
-} from '@tabler/icons-react'
+import { IconCloud, IconGitBranch } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FaGithub } from 'react-icons/fa'
@@ -14,40 +9,22 @@ import { BentoGrid, BentoGridItem } from '../ui/bento-grid'
 
 const projectsData = [
   {
-    title: 'Observability & Monitoring – UWAS',
+    title: 'DevOps CI/CD Pipeline · ESPRIT Academic Project',
     description:
-      'Implemented full-stack observability for the UWAS platform using New Relic, Ansible automation, and Kubernetes integration.',
-    imageURL: '/coral-io-logo.png',
-    github: 'https://github.com/ROPOROS/Monitoring_stack', // you can make a case study repo
-    live: '#',
-    icon: <IconNetwork className="h-4 w-4 text-muted-foreground" />,
-  },
-  {
-    title: 'CI/CD Pipeline – ESPRIT Academic Project',
-    description:
-      'Built a modern CI/CD pipeline integrating Jenkins, SonarQube, Nexus, JUnit, and JMeter for Spring Boot & Angular apps.',
+      'Academic DevOps project focused on building a CI/CD pipeline for a web application. Jenkins pipeline for a Spring Boot and Angular application, with JUnit tests, SonarQube code quality analysis and Nexus for artifacts. The application was containerized with Docker and Docker Compose, with JMeter for performance testing and Prometheus and Grafana for monitoring.',
     imageURL: '/ci-cd.jpg',
     github: 'https://github.com/ROPOROS/DevOps_CI-CD_Pipeline',
     live: '#',
     icon: <IconGitBranch className="h-4 w-4 text-muted-foreground" />,
   },
   {
-    title: 'CareerTN Cloud Platform',
+    title: 'CareerTN · ESPRIT Academic Project',
     description:
-      'Developed a private cloud infrastructure using OpenStack and a multi-tenant SaaS application for service hiring.',
+      'Academic cloud and infrastructure project focused on deploying and managing application infrastructure. Worked with OpenStack services including Nova, Neutron, Cinder, Swift and Horizon, and with Kubernetes and Docker for containerized deployment of a Spring Boot and Angular application using MySQL.',
     imageURL: '/careertn.png',
     github: 'https://github.com/ROPOROS/HTTP200-Cloud-Pi-Project',
     live: '#',
     icon: <IconCloud className="h-4 w-4 text-muted-foreground" />,
-  },
-  {
-    title: 'Hydra – Esports Tournament Platform',
-    description:
-      'Cross-platform app suite for hosting online gaming tournaments with betting & donations using Symfony, JavaFX, and Codename One.',
-    imageURL: '/hydra.png',
-    github: 'https://github.com/ROPOROS/Hydra-Esports-Tournament-Platform',
-    live: '#',
-    icon: <IconDeviceGamepad2 className="h-4 w-4 text-muted-foreground" />,
   },
 ]
 
@@ -69,9 +46,9 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text ">My Projects</h1>
+          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text ">Projects</h2>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto text-base font-semibold md:text-lg italic">
-            A collection of academic, personal, and professional DevOps projects demonstrating my technical expertise.
+            Selected DevOps and infrastructure academic projects.
           </p>
         </motion.div>
       </div>

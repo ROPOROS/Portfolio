@@ -11,16 +11,20 @@ interface Certification {
   link: string
   imageURL: string
   description: string
+  period: string
+  status: string
 }
 
 const certifications: Certification[] = [
   {
     id: 1,
     issuer: 'AWS',
-    title: 'Certified Cloud Practitioner',
+    title: 'AWS Certified Cloud Practitioner',
     link: 'https://www.credly.com/badges/ed3afc59-ee40-47cf-9bc6-cdc9e1da83ae',
     imageURL: '/aws-cloud-practitioner-badge.png', // replace with your badge image
-    description: `This certification demonstrates foundational knowledge of AWS cloud concepts, services, security, pricing, and support.`,
+    description: `Earned in July 2023 and expired in July 2026. Covered foundational knowledge of AWS cloud concepts, services, security, pricing, and support.`,
+    period: 'Jul 2023 – Jul 2026',
+    status: 'Expired',
   },
   // add more certifications here with unique id & imageURL
 ]
@@ -49,6 +53,7 @@ export function BlogsSection() {
         <div className="relative flex items-center justify-center gap-4">
           {/* Left Arrow */}
           <button
+            aria-label="Previous certification"
             onClick={prevCert}
             className="p-2 rounded-full bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 absolute left-0 z-10"
           >
@@ -69,6 +74,7 @@ export function BlogsSection() {
 
           {/* Right Arrow */}
           <button
+            aria-label="Next certification"
             onClick={nextCert}
             className="p-2 rounded-full bg-gray-200 dark:bg-neutral-700 hover:bg-gray-300 dark:hover:bg-neutral-600 absolute right-0 z-10"
           >
@@ -76,8 +82,9 @@ export function BlogsSection() {
           </button>
         </div>
 
-        <p className="mt-4 text-center text-zinc-600 dark:text-zinc-300">
-          {selectedCert.title} - {selectedCert.issuer}
+        <p className="mt-4 text-center text-zinc-600 dark:text-zinc-300">{selectedCert.title}</p>
+        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
+          {selectedCert.period} · {selectedCert.status}
         </p>
       </div>
 
@@ -88,6 +95,9 @@ export function BlogsSection() {
             <DialogTitle className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
               {selectedCert.title}
             </DialogTitle>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              {selectedCert.period} · {selectedCert.status}
+            </p>
           </DialogHeader>
           <div className="mt-6 prose prose-zinc dark:prose-invert max-w-none">
             <img

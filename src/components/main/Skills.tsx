@@ -12,32 +12,44 @@ export interface Skill {
   height?: number
 }
 
-// All logos should be in /public/tech/
+// Ordered by relevance: infrastructure, automation, CI/CD and observability first.
 const skills: Skill[] = [
+  { skill_name: 'Linux', Image: '/linux.png' },
   { skill_name: 'Docker', Image: '/docker.png' },
-  { skill_name: 'Kubernetes', Image: '/kubernetes.png' },
+  { skill_name: 'Terraform', Image: '/terraform.png' },
   { skill_name: 'Ansible', Image: '/ansible.png' },
-  { skill_name: 'Git', Image: '/git.png' },
+  { skill_name: 'Kubernetes', Image: '/kubernetes.png' },
   { skill_name: 'GitLab', Image: '/gitlab.png' },
-  { skill_name: 'Jenkins', Image: '/jenkins.png' },
-  { skill_name: 'Junit', Image: '/junit.png' },
-  { skill_name: 'SonarQube', Image: '/sonarqube.png' },
+  { skill_name: 'Git', Image: '/git.png' },
   { skill_name: 'Prometheus', Image: '/prometheus.png' },
   { skill_name: 'Grafana', Image: '/grafana.png' },
-  { skill_name: 'Terraform', Image: '/terraform.png' },
   { skill_name: 'New Relic', Image: '/newrelic.png' },
   { skill_name: 'Proxmox', Image: '/proxmox.png' },
-  { skill_name: 'AWS', Image: '/aws.png' },
-  { skill_name: 'Azure', Image: '/azure.png' },
+  { skill_name: 'Jenkins', Image: '/jenkins.png' },
+  { skill_name: 'SonarQube', Image: '/sonarqube.png' },
+  { skill_name: 'Nexus', Image: '/nexus.png' },
+  { skill_name: 'JUnit', Image: '/junit.png' },
+  { skill_name: 'Apache JMeter', Image: '/jmeter.png' },
   { skill_name: 'OpenStack', Image: '/openstack.png' },
-  { skill_name: 'Linux', Image: '/linux.png' },
+  { skill_name: 'Azure', Image: '/azure.png' },
+  { skill_name: 'pfSense', Image: '/pfsense.png' },
+  { skill_name: 'OpenVPN', Image: '/openvpn.png' },
   { skill_name: 'Spring Boot', Image: '/spring-boot.png' },
   { skill_name: 'Angular', Image: '/angular.png' },
-  { skill_name: 'PfSense', Image: '/pfsense.png' },
-  { skill_name: 'OpenVPN', Image: '/openvpn.png' },
   { skill_name: 'Symfony', Image: '/symfony.png' },
-  { skill_name: 'Nexus', Image: '/nexus.png' },
-  { skill_name: 'Apache JMeter', Image: '/jmeter.png' },
+]
+
+// Tools without a logo in /public, listed as text under the grid.
+const moreTools = [
+  'Docker Compose',
+  'Helm',
+  'Harbor',
+  'HAProxy',
+  'Nginx',
+  'Loki',
+  'Tempo',
+  'Alertmanager',
+  'OpenTelemetry Collector',
 ]
 
 const uniqueSkills: Skill[] = Array.from(
@@ -49,7 +61,7 @@ const uniqueSkills: Skill[] = Array.from(
       return map
     }, new Map<string, Skill>())
     .values(),
-).sort((a, b) => a.skill_name.localeCompare(b.skill_name))
+)
 
 const Skills = () => {
   return (
@@ -70,10 +82,10 @@ const Skills = () => {
           id="skills-heading"
           className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
         >
-          Technical Expertise
+          Skills
         </h2>
         <p className="mt-2 text-sm sm:text-base text-muted-foreground font-medium">
-          A refined selection of my proficiency in modern development tools and technologies
+          Tools I have worked with across my work experience, internships and academic projects
         </p>
       </div>
 
@@ -85,7 +97,7 @@ const Skills = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ staggerChildren: 0.05 }}
       >
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-4 sm:gap-6">
+        <div role="list" className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-4 sm:gap-6">
           {uniqueSkills.map((skill, index) => (
             <motion.div
               key={skill.skill_name}
@@ -119,7 +131,7 @@ const Skills = () => {
 
       {/* Footer */}
       <p className="mt-6 text-center text-sm text-muted-foreground font-medium">
-        Continuously expanding and refining my DevOps skillset
+        Also: {moreTools.join(' · ')}
       </p>
     </section>
   )

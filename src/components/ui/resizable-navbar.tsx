@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/
 import Image from 'next/image'
 
 
-import React, { JSX, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 interface NavbarProps {
   children: React.ReactNode

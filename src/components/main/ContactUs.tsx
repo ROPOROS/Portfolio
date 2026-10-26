@@ -139,8 +139,8 @@ const ContactUs: FC = () => {
             >
               <h2 className="text-4xl font-extrabold">Connect With Me</h2>
               <p className="text-muted-foreground leading-relaxed text-base">
-                Have a project in mind or a question? Reach out and let&apos;s turn your ideas into
-                reality.
+                I am open to DevOps and DevSecOps opportunities. Feel free to contact me by email or
+                phone, or send a message here.
               </p>
 
               <div className="space-y-5 text-foreground">

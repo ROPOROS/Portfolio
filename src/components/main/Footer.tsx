@@ -1,30 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { RxGithubLogo } from 'react-icons/rx'
 import { FaLinkedin } from 'react-icons/fa';
 
 
 const Footer: FC = () => {
-  const [visitorCount, setVisitorCount] = useState<number>(0)
-
-  useEffect(() => {
-    const savedCount = localStorage.getItem('visitorCount')
-    const lastVisit = localStorage.getItem('lastVisit')
-    const today = new Date().toDateString()
-
-    let count = savedCount ? parseInt(savedCount, 10) : 0
-
-    if (!lastVisit || lastVisit !== today) {
-      count += 1
-      localStorage.setItem('visitorCount', count.toString())
-      localStorage.setItem('lastVisit', today)
-    }
-
-    setVisitorCount(count)
-  }, [])
-
   const socialLinks = [
     {
       href: 'https://github.com/ROPOROS',
@@ -68,9 +50,9 @@ const Footer: FC = () => {
           animate="visible"
         >
           <motion.div className="space-y-4" variants={childVariants}>
-            <h1 className="text-2xl font-extrabold bg-clip-text">Chebbi Raed</h1>
+            <p className="text-2xl font-extrabold bg-clip-text">Raed Chebbi</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Crafting scalable web apps, open-source tools, and innovative digital experiences.
+              DevOps &amp; DevSecOps engineer working on infrastructure, automation, CI/CD and observability.
             </p>
           </motion.div>
 
@@ -122,13 +104,7 @@ const Footer: FC = () => {
           animate="visible"
         >
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Built with ❤️.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Visitors:{' '}
-            <span className="font-semibold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              {visitorCount.toLocaleString()}
-            </span>
+            © {new Date().getFullYear()} Raed Chebbi
           </p>
         </motion.div>
       </div>

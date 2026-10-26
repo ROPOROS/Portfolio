@@ -4,34 +4,13 @@ import { Badge } from '@/components/ui/badge'
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from '@/utils/motion'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { TbCloudComputing } from 'react-icons/tb'
 import { PointerHighlight } from '../ui/pointer-highlight'
 import { NavbarButton } from '../ui/resizable-navbar'
 
 const HeroContent: FC = () => {
-  const titles = [
-    'DevOps & Cloud Engineer',
-    'Full-Stack Developer',
-    'SRE Advocate',
-    'Automation Enthusiast',
-  ]
-
-  const [currentTitle, setCurrentTitle] = useState(titles[0])
-  const [index, setIndex] = useState(0)
-
-  // Cycle through the titles at a smoother pace
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % titles.length)
-    }, 5000) // Change every 5 seconds
-
-    return () => clearInterval(interval)
-  }, [titles.length])
-
-  useEffect(() => {
-    setCurrentTitle(titles[index])
-  }, [index, titles])
+  const title = 'DevOps & DevSecOps Engineer'
 
   // Smooth scrolling to the contact section
   function smoothScrollTo(element: HTMLElement, duration = 1000) {
@@ -71,9 +50,9 @@ const HeroContent: FC = () => {
         variants={slideInFromLeft(0.5)}
         className="flex flex-col items-center justify-between gap-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight"
       >
-        <span className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
           Raed Chebbi
-        </span>
+        </h1>
 
         <PointerHighlight rectangleClassName="rounded-none">
           <motion.span
@@ -86,7 +65,7 @@ const HeroContent: FC = () => {
             }}
             className="text-primary p-3 text-3xl lg:text-6xl"
           >
-            {currentTitle}
+            {title}
           </motion.span>
         </PointerHighlight>
 
