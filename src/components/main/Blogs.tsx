@@ -12,7 +12,6 @@ interface Certification {
   imageURL: string
   description: string
   period: string
-  status: string
 }
 
 const certifications: Certification[] = [
@@ -24,7 +23,6 @@ const certifications: Certification[] = [
     imageURL: '/aws-cloud-practitioner-badge.png', // replace with your badge image
     description: `Earned in July 2023 and expired in July 2026. Covered foundational knowledge of AWS cloud concepts, services, security, pricing, and support.`,
     period: 'Jul 2023 – Jul 2026',
-    status: 'Expired',
   },
   // add more certifications here with unique id & imageURL
 ]
@@ -84,7 +82,7 @@ export function BlogsSection() {
 
         <p className="mt-4 text-center text-zinc-600 dark:text-zinc-300">{selectedCert.title}</p>
         <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
-          {selectedCert.period} · {selectedCert.status}
+          {selectedCert.period}
         </p>
       </div>
 
@@ -96,7 +94,7 @@ export function BlogsSection() {
               {selectedCert.title}
             </DialogTitle>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              {selectedCert.period} · {selectedCert.status}
+              {selectedCert.period}
             </p>
           </DialogHeader>
           <div className="mt-6 prose prose-zinc dark:prose-invert max-w-none">

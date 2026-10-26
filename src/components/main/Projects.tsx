@@ -102,7 +102,8 @@ const Projects = () => {
               </div>
             }
             icon={project.icon}
-            className={i === 1 ? 'md:col-span-2' : ''}
+            // justify-start keeps the text right under the image when a card is stretched to its row's height
+            className={i === 1 ? 'md:col-span-2 justify-start' : 'justify-start'}
           />
         ))}
       </BentoGrid>
