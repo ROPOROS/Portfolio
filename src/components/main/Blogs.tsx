@@ -63,6 +63,7 @@ export function BlogsSection() {
             className="cursor-pointer w-40 h-40 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden flex items-center justify-center bg-white dark:bg-neutral-900"
             onClick={() => setOpenDialog(true)}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={selectedCert.imageURL}
               alt={selectedCert.title}
@@ -98,6 +99,7 @@ export function BlogsSection() {
             </p>
           </DialogHeader>
           <div className="mt-6 prose prose-zinc dark:prose-invert max-w-none">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={selectedCert.imageURL}
               alt={selectedCert.title}
