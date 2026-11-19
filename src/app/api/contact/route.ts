@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
-export const runtime = 'nodejs' // SMTP requires Node.js runtime
+export const runtime = 'edge' // required by Cloudflare Pages (next-on-pages); Resend uses fetch, not SMTP
 
 interface FormData {
   name: string
@@ -25,22 +25,19 @@ export async function POST(req: Request) {
     const sanitizedSubject = sanitize(subject)
     const sanitizedMessage = sanitize(message)
 
-    // ✅ Create Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,          // SSL port
-      secure: true,       // true for SSL
-      auth: {
-        user: process.env.SMTP_USER,  // sending email
-        pass: process.env.SMTP_PASS,  // Gmail App Password
-      },
-    })
+    // ✅ Create the Resend client (API key comes from the environment, never from source)
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('Email error: RESEND_API_KEY is not configured')
+      return new Response(JSON.stringify({ error: 'Failed to send email' }), { status: 500 })
+    }
+    const resend = new Resend(apiKey)
 
     // ✅ Send the email
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,  // must match your Gmail
-      to: process.env.SMTP_TO || 'raedchebbi.work@gmail.com',  // where you want to receive messages
-      replyTo: email,                                         // lets you reply to the visitor
+    const { error: sendError } = await resend.emails.send({
+      from: process.env.CONTACT_FROM || 'Portfolio Contact <onboarding@resend.dev>', // use a sender verified in Resend
+      to: process.env.CONTACT_TO || process.env.SMTP_TO || 'raedchebbi.work@gmail.com', // where you want to receive messages
+      replyTo: email,                                                                  // lets you reply to the visitor
       subject: sanitizedSubject,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -55,6 +52,7 @@ export async function POST(req: Request) {
         <p style="font-size:0.85rem; color:#666;">Sent via portfolio contact form</p>
       `,
     })
+    if (sendError) throw new Error(sendError.message)
 
     return new Response(JSON.stringify({ message: 'Message sent successfully!' }), { status: 200 })
   } catch (error) {
