@@ -43,6 +43,8 @@ const skills: Skill[] = [
 const moreTools = [
   'Docker Compose',
   'Helm',
+  'Argo CD',
+  'GitOps',
   'Harbor',
   'HAProxy',
   'Nginx',
@@ -50,6 +52,11 @@ const moreTools = [
   'Tempo',
   'Alertmanager',
   'OpenTelemetry Collector',
+  'Trivy',
+  'Gitleaks',
+  'Semgrep',
+  'OWASP ZAP',
+  'OWASP Dependency-Check',
 ]
 
 const uniqueSkills: Skill[] = Array.from(

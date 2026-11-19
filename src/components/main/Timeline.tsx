@@ -32,11 +32,12 @@ export const timelineData: TimelineItem[] = [
     description:
       'DevSecOps engineering for CLAPA, a B2B SaaS platform in the insurance sector, with a focus on infrastructure, automation, CI/CD and observability.',
     achievements: [
-      'Provisioned and configured infrastructure using Terraform and Ansible on Linux.',
-      'Worked with containerized application environments using Docker and Docker Compose.',
-      'Worked on CI/CD automation with GitLab CI/CD.',
-      'Configured Nginx, TLS and DNS for application environments.',
-      'Worked on monitoring and observability using Prometheus, Grafana, Alertmanager, Loki, Tempo and OpenTelemetry Collector.',
+      'Designed and evolved the infrastructure for CLAPA, a Node.js/Express, React and PostgreSQL B2B SaaS application, from Docker-based deployment to a reproducible Kubernetes platform on OVH.',
+      'Automated Linux infrastructure provisioning and configuration with Terraform and Ansible, including system hardening, firewall rules and secure SSH access.',
+      'Containerized and orchestrated application workloads with Docker, Kubernetes and Helm, using Nginx/Ingress, TLS and DNS for secure application exposure.',
+      'Built GitLab CI/CD pipelines for testing, container image building, security scanning and registry publishing, with Argo CD enabling GitOps-based continuous delivery to Kubernetes.',
+      'Integrated DevSecOps security controls with Trivy, Gitleaks, Semgrep, OWASP Dependency-Check, SonarQube and OWASP ZAP across source code, dependencies, secrets, container images and deployed applications.',
+      'Implemented observability, alerting and recovery with Prometheus, Grafana, Loki, Tempo, Alertmanager and OpenTelemetry Collector, alongside encrypted off-site PostgreSQL backups and tested restoration procedures.',
     ],
     icon: <FaBriefcase className="w-6 h-6 text-primary" />,
     companyIcon: <FaBuilding className="w-8 h-8 text-purple-500" />,
